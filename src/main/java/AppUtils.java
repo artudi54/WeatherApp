@@ -62,12 +62,11 @@ public class AppUtils {
 
     public static void setWorkingDirectory() {
         try {
-            Path path = Paths.get(FXMain.class
+            Path path = Paths.get(AppUtils.class
                     .getProtectionDomain()
                     .getCodeSource()
                     .getLocation()
-                    .toURI()
-                    .getPath());
+                    .toURI());
             if (!Files.isDirectory(path)) {
                 path = path.getParent();
             }
