@@ -20,6 +20,7 @@ public class AppUtils {
     public static void loadFXML(URL fxml, Object rootController) {
         loadFXML(fxml, rootController, rootController);
     }
+
     public static void loadFXML(URL fxml, Object controller, Object root) {
         try {
             FXMLLoader loader = new FXMLLoader(fxml);
@@ -32,7 +33,7 @@ public class AppUtils {
         }
     }
 
-    public static void closeExecutorService(ExecutorService executorService) {
+    public static void shutdownExecutorService(ExecutorService executorService) {
         try {
             executorService.shutdownNow();
             executorService.awaitTermination(1, TimeUnit.SECONDS);
@@ -42,6 +43,7 @@ public class AppUtils {
         }
     }
 
+    // workaround for kde plasma stage show bug
     public static void setDialogMinSize(Dialog dialog) {
         DialogPane pane = dialog.getDialogPane();
         Stage stage = (Stage)pane.getScene().getWindow();
@@ -51,6 +53,7 @@ public class AppUtils {
         stage.setMinHeight(pane.getHeight());
     }
 
+    // workaround for kde plasma stage show bug
     public static void setGroupMinSize(Group group) {
         group.applyCss();
         group.layout();

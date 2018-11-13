@@ -25,18 +25,6 @@ public class Cities {
         parseCityList(cityListJson, countries);
     }
 
-    public City getClosestCity(Coordinates coordinates) {
-        if (cities.isEmpty())
-            return null;
-
-        City closest = cities.iterator().next();
-        for (City city : cities) {
-            if (coordinates.distanceSq(city.getCoordinates()) < coordinates.distanceSq(closest.getCoordinates()))
-                closest = city;
-        }
-        return closest;
-    }
-
     public City getCityById(int id) {
         return citiesById.get(id);
     }

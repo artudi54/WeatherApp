@@ -15,10 +15,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WeatherDisplay extends BorderPane {
-    private static class ComboBoxContainer {
+    private static final ConditionContainer EMPTY_CONDITION_CONTAINER = new ConditionContainer(new WeatherConditionDisplay());
+
+    private static class ConditionContainer {
         private WeatherConditionDisplay weatherConditionDisplay;
 
-        public ComboBoxContainer(WeatherConditionDisplay weatherConditionDisplay) {
+        public ConditionContainer(WeatherConditionDisplay weatherConditionDisplay) {
             this.weatherConditionDisplay = weatherConditionDisplay;
         }
 
@@ -33,17 +35,15 @@ public class WeatherDisplay extends BorderPane {
     }
 
     @FXML
-    private ComboBox<ComboBoxContainer> conditionDisplayComboBox;
+    private ComboBox<ConditionContainer> conditionDisplayComboBox;
     @FXML
     private HBox contentPane;
 
-    private final ComboBoxContainer EMPTY_CONDITION_CONTAINER;
     private WeatherIcons weatherIcons;
 
     public WeatherDisplay() {
         AppUtils.loadFXML(getClass().getResource("/fxml/WeatherDisplay.fxml"), this);
         conditionDisplayComboBox.valueProperty().addListener(((observableValue, oldV, newV) -> updateWeather(newV)));
-        EMPTY_CONDITION_CONTAINER = new ComboBoxContainer(new WeatherConditionDisplay());
         clearWeather();
     }
 
@@ -62,7 +62,7 @@ public class WeatherDisplay extends BorderPane {
         }
 
         conditionDisplayComboBox.setItems(FXCollections.observableArrayList(
-                new ComboBoxContainer(makeWeatherConditionDisplay(currentWeatherCondition.getWeatherCondition()))));
+                new ConditionContainer(makeWeatherConditionDisplay(currentWeatherCondition.getWeatherCondition()))));
         conditionDisplayComboBox.getSelectionModel().select(0);
     }
 
@@ -72,9 +72,9 @@ public class WeatherDisplay extends BorderPane {
             return;
         }
 
-        List<ComboBoxContainer> conditionDisplayList = threeHourWeatherForecast.getWeatherConditions().stream()
+        List<ConditionContainer> conditionDisplayList = threeHourWeatherForecast.getWeatherConditions().stream()
                 .map(this::makeWeatherConditionDisplay)
-                .map(ComboBoxContainer::new)
+                .map(ConditionContainer::new)
                 .collect(Collectors.toList());
         conditionDisplayComboBox.setItems(FXCollections.observableList(conditionDisplayList));
         conditionDisplayComboBox.getSelectionModel().select(0);
@@ -92,10 +92,10 @@ public class WeatherDisplay extends BorderPane {
         return weatherConditionDisplay;
     }
 
-    private void updateWeather(ComboBoxContainer comboBoxContainer) {
-        if (comboBoxContainer == null)
+    private void updateWeather(ConditionContainer conditionContainer) {
+        if (conditionContainer == null)
             contentPane.getChildren().setAll(EMPTY_CONDITION_CONTAINER.getWeatherConditionDisplay());
         else
-            contentPane.getChildren().setAll(comboBoxContainer.getWeatherConditionDisplay());
+            contentPane.getChildren().setAll(conditionContainer.getWeatherConditionDisplay());
     }
 }

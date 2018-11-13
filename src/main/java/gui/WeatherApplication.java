@@ -10,9 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import main.java.AppUtils;
 import main.java.Resources;
 import main.java.config.Config;
@@ -22,6 +22,7 @@ import main.java.config.gui.CompleteConfig;
 import main.java.config.gui.ConfigLoaderDialog;
 import main.java.config.gui.OptionsDialog;
 import main.java.exception.ConfigException;
+import main.java.exception.WeatherRequestException;
 import main.java.exception.WeatherResponseParseException;
 import main.java.gui.display.CityDisplay;
 import main.java.gui.display.WeatherDisplay;
@@ -37,8 +38,6 @@ import main.java.weather.condition.CurrentWeatherCondition;
 import main.java.weather.condition.ThreeHourWeatherForecast;
 import org.controlsfx.control.StatusBar;
 
-import java.io.File;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 public class WeatherApplication extends Stage {
@@ -75,8 +74,6 @@ public class WeatherApplication extends Stage {
     @FXML
     private Button optionsButton;
 
-    private WorldInformation worldInformation;
-    private WeatherIcons weatherIcons;
     private Config config;
     private WeatherJSONParser weatherJSONParser;
     private WeatherRequestMaker weatherRequestMaker;
@@ -86,13 +83,23 @@ public class WeatherApplication extends Stage {
 
 
     public WeatherApplication() {
-        Group content = new Group();
-        AppUtils.loadFXML(getClass().getResource("/fxml/WeatherApplication.fxml"), this, content);
-        setScene(new Scene(content));
-        getIcons().add(new Image(Resources.getResourceAsStream("/icon.png")));
-        AppUtils.setGroupMinSize(content);
+        initStage();
         loadConfig();
         setNoneState();
+    }
+
+    private void initStage() {
+        Group content = new Group();
+        AppUtils.loadFXML(getClass().getResource("/fxml/WeatherApplication.fxml"), this, content);
+
+        setScene(new Scene(content));
+
+        getIcons().add(new Image(Resources.getResourceAsStream("/icon.png")));
+        AppUtils.setGroupMinSize(content);
+
+        setOnCloseRequest(event -> handleCloseRequest());
+        setTitle("WeatherApp");
+        setResizable(false);
     }
 
     private void loadConfig() {
@@ -113,8 +120,8 @@ public class WeatherApplication extends Stage {
             System.exit(1);
         }
 
-        worldInformation = completeConfig.get().getWorldInformation();
-        weatherIcons = completeConfig.get().getWeatherIcons();
+        WorldInformation worldInformation = completeConfig.get().getWorldInformation();
+        WeatherIcons weatherIcons = completeConfig.get().getWeatherIcons();
         config = completeConfig.get().getConfig();
 
         weatherJSONParser = new WeatherJSONParser(worldInformation);
@@ -139,10 +146,6 @@ public class WeatherApplication extends Stage {
             locationChooser.setCoordinates(config.getLastCoordinates());
             locationChooser.setCityId(config.getLastCityId());
         }
-
-        setOnCloseRequest(event -> handleCloseRequest());
-        setTitle("WeatherApp");
-        setResizable(false);
     }
 
     private void setNoneState() {
@@ -183,6 +186,7 @@ public class WeatherApplication extends Stage {
                 "Input error - " + exc.getMessage(),
                 ButtonType.OK);
         alert.setHeaderText(title);
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.initOwner(getScene().getWindow());
         AppUtils.setDialogMinSize(alert);
         alert.showAndWait();
@@ -212,7 +216,7 @@ public class WeatherApplication extends Stage {
             lastRequest.asyncRun();
             setDownloadingState();
         }
-        catch (Exception exc) {
+        catch (WeatherRequestException exc) {
             showError("Weather request error", exc);
         }
     }
@@ -243,7 +247,7 @@ public class WeatherApplication extends Stage {
             lastRequest.asyncRun();
             setDownloadingState();
         }
-        catch (Exception exc) {
+        catch (WeatherRequestException exc) {
             showError("Weather request error", exc);
         }
     }
@@ -267,7 +271,7 @@ public class WeatherApplication extends Stage {
             lastRequest.asyncRun();
             setDownloadingState();
         }
-        catch (Exception exc) {
+        catch (WeatherRequestException exc) {
             showError("Weather request error", exc);
         }
     }
@@ -301,8 +305,13 @@ public class WeatherApplication extends Stage {
 
     private void handleRefresh() {
         if (lastRequest != null) {
-            lastRequest.asyncRun();
-            setDownloadingState();
+            try {
+                lastRequest.asyncRun();
+                setDownloadingState();
+            }
+            catch (WeatherRequestException exc) {
+                showError("Weather request error", exc);
+            }
         }
     }
 

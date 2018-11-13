@@ -2,7 +2,6 @@ package main.java.networking;
 
 import main.java.AppUtils;
 import main.java.config.Config;
-import main.java.exception.WeatherRequestException;
 import main.java.weather.types.Coordinates;
 
 import java.io.Closeable;
@@ -24,7 +23,7 @@ public class WeatherRequestMaker implements Closeable {
         this.executorService = Executors.newSingleThreadExecutor();
     }
 
-    private WeatherRequest weatherById(String prefix, int id) throws WeatherRequestException {
+    private WeatherRequest weatherById(String prefix, int id) {
         String urlStr = String.format(
                 "%s?id=%d&units=%s&APPID=%s",
                 prefix, id, config.getUnitsFormat(), config.getWeatherApiKey());
@@ -37,7 +36,7 @@ public class WeatherRequestMaker implements Closeable {
         }
     }
 
-    private WeatherRequest weatherByCity(String prefix, String cityName) throws WeatherRequestException {
+    private WeatherRequest weatherByCity(String prefix, String cityName) {
         String urlStr = String.format(
                 "%s?q=%s&units=%s&APPID=%s",
                 prefix, cityName, config.getUnitsFormat(), config.getWeatherApiKey());
@@ -50,7 +49,7 @@ public class WeatherRequestMaker implements Closeable {
         }
     }
 
-    private WeatherRequest weatherByCity(String prefix, String cityName, String countryIso2Code) throws WeatherRequestException {
+    private WeatherRequest weatherByCity(String prefix, String cityName, String countryIso2Code) {
         String urlStr = String.format(
                 "%s?q=%s,%s&units=%s&APPID=%s",
                 prefix, cityName, countryIso2Code, config.getUnitsFormat(), config.getWeatherApiKey());
@@ -63,7 +62,7 @@ public class WeatherRequestMaker implements Closeable {
         }
     }
 
-    private WeatherRequest weatherByCoordinates(String prefix, Coordinates coordinates) throws WeatherRequestException {
+    private WeatherRequest weatherByCoordinates(String prefix, Coordinates coordinates) {
         Objects.requireNonNull(coordinates, "coordinates cannot be null");
         String urlStr = String.format(
                 "%s?lat=%f&lon=%f&units=%s&APPID=%s",
@@ -77,39 +76,39 @@ public class WeatherRequestMaker implements Closeable {
         }
     }
 
-    public WeatherRequest currentWeatherById(int id) throws WeatherRequestException {
+    public WeatherRequest currentWeatherById(int id) {
         return weatherById(CURRENT_PREFIX, id);
     }
 
-    public WeatherRequest currentWeatherByCity(String cityName) throws WeatherRequestException {
+    public WeatherRequest currentWeatherByCity(String cityName) {
         return weatherByCity(CURRENT_PREFIX, cityName);
     }
-    public WeatherRequest currentWeatherByCity(String cityName, String countryIso2Code) throws WeatherRequestException {
+    public WeatherRequest currentWeatherByCity(String cityName, String countryIso2Code) {
         return weatherByCity(CURRENT_PREFIX, cityName, countryIso2Code);
     }
 
-    public WeatherRequest currentWeatherByCoordiantes(Coordinates coordinates) throws WeatherRequestException {
+    public WeatherRequest currentWeatherByCoordiantes(Coordinates coordinates) {
         return weatherByCoordinates(CURRENT_PREFIX, coordinates);
     }
 
-    public WeatherRequest threeHourWeatherForecastById(int id) throws WeatherRequestException {
+    public WeatherRequest threeHourWeatherForecastById(int id) {
         return weatherById(THREE_HOUR_FORECAST_PREFIX, id);
     }
 
-    public WeatherRequest threeHourWeatherForecastByCity(String cityName) throws WeatherRequestException {
+    public WeatherRequest threeHourWeatherForecastByCity(String cityName) {
         return weatherByCity(THREE_HOUR_FORECAST_PREFIX, cityName);
     }
 
-    public WeatherRequest threeHourWeatherForecastByCity(String cityName, String countryIso2Code) throws WeatherRequestException {
+    public WeatherRequest threeHourWeatherForecastByCity(String cityName, String countryIso2Code) {
         return weatherByCity(THREE_HOUR_FORECAST_PREFIX, cityName, countryIso2Code);
     }
 
-    public WeatherRequest threeHourWeatherForecastByCoordiantes(Coordinates coordinates) throws WeatherRequestException {
+    public WeatherRequest threeHourWeatherForecastByCoordiantes(Coordinates coordinates) {
         return weatherByCoordinates(THREE_HOUR_FORECAST_PREFIX, coordinates);
     }
 
     @Override
     public void close() {
-        AppUtils.closeExecutorService(executorService);
+        AppUtils.shutdownExecutorService(executorService);
     }
 }

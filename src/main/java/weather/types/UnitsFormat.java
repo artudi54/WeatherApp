@@ -24,7 +24,6 @@ public enum UnitsFormat {
     }
 
     private static final Map<String, UnitsFormat> STRING_UNITS_FORMAT_MAP;
-
     static {
         STRING_UNITS_FORMAT_MAP = new HashMap<>();
         STRING_UNITS_FORMAT_MAP.put(DEFAULT.name, DEFAULT);

@@ -1,10 +1,8 @@
 package main.java.gui.display;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import main.java.AppUtils;
@@ -12,7 +10,6 @@ import main.java.config.WeatherIcons;
 import main.java.weather.condition.WeatherCondition;
 import main.java.weather.types.ConditionDate;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -84,7 +81,10 @@ public class WeatherConditionDisplay extends VBox {
             clearWeather();
         else {
             dateLabel.setText(makeDateDescription(weatherCondition.getConditionDate()));
-            weatherIconView.setImage(weatherIcons.getIcon(weatherCondition.getWeatherDescription().getIconName()));
+            if (weatherIcons != null)
+                weatherIconView.setImage(weatherIcons.getIcon(weatherCondition.getWeatherDescription().getIconName()));
+            else
+                weatherIconView.setImage(null);
             descriptionLabel.setText(weatherCondition.getWeatherDescription().toString());
             temperatureLabel.setText(weatherCondition.getTemperature().toString());
             minimalTemperatureLabel.setText(weatherCondition.getMinimalTemperature().toString());

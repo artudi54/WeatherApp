@@ -4,18 +4,15 @@ import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import main.java.AppUtils;
 
-import java.io.IOException;
-import java.security.InvalidParameterException;
 import java.util.regex.Pattern;
 
 public class IDChooser extends GridPane {
-    private final Pattern PATTERN = Pattern.compile("[^\\d]+");
+    private final Pattern DIGIT_PATTERN = Pattern.compile("[^\\d]+");
 
     @FXML
     private TextField idInputField;
@@ -57,7 +54,7 @@ public class IDChooser extends GridPane {
     }
 
     private void digitFilter(String oldValue, String newValue) {
-        if (PATTERN.matcher(newValue).find())
+        if (DIGIT_PATTERN.matcher(newValue).find())
             idInputField.setText(oldValue);
     }
 }

@@ -1,7 +1,6 @@
 package main.java.config;
 
 import javafx.scene.image.Image;
-
 import main.java.exception.ConfigException;
 
 import java.io.IOException;

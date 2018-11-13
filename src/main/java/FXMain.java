@@ -3,7 +3,6 @@ package main.java;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-
 import main.java.gui.WeatherApplication;
 
 public class FXMain extends Application {

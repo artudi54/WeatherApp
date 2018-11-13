@@ -2,6 +2,7 @@ package main.java.networking;
 
 import javafx.application.Platform;
 import main.java.exception.WeatherRequestException;
+import main.java.exception.WeatherResponseParseException;
 import main.java.weather.types.UnitsFormat;
 
 import java.io.BufferedReader;
@@ -29,10 +30,6 @@ public class WeatherRequest {
         @Override
         public void run() {
             try {
-                HttpURLConnection httpConnection = (HttpURLConnection)requestUrl.openConnection();
-                httpConnection.setConnectTimeout(5000);
-                httpConnection.setReadTimeout(10000);
-                httpConnection.setInstanceFollowRedirects(false);
                 InputStream inputStream = httpConnection.getInputStream();
                 InputStreamReader streamReader = new InputStreamReader(inputStream);
                 BufferedReader bufferedReader = new BufferedReader(streamReader);
@@ -45,15 +42,13 @@ public class WeatherRequest {
                 bufferedReader.close();
                 httpConnection.disconnect();
 
-
                 if (onResponseReady != null) {
                     WeatherResponse weatherResponse = new WeatherResponse(responseBuilder.toString(),
-                                                                          acquisitionType,
-                                                                          unitsFormat);
+                                                                          acquisitionType, unitsFormat);
                     Platform.runLater(() -> onResponseReady.onResponseReady(weatherResponse));
                 }
             }
-            catch (IOException exc) {
+            catch (Exception exc) {
                 if (onError != null)
                     Platform.runLater(() -> onError.onError(exc));
             }
@@ -85,7 +80,7 @@ public class WeatherRequest {
     private OnResponseReady onResponseReady;
     private ExecutorService executorService;
     private UnitsFormat unitsFormat;
-
+    private HttpURLConnection httpConnection;
 
     public WeatherRequest(URL requestUrl, ExecutorService executorService) {
         this.requestUrl = Objects.requireNonNull(requestUrl, "requestUrl cannot be null");
@@ -102,7 +97,16 @@ public class WeatherRequest {
         this.onResponseReady = onResponseReady;
     }
 
-    public void asyncRun() {
-        executorService.execute(new ResponseReader());
+    public void asyncRun() throws WeatherRequestException {
+        try {
+            httpConnection = (HttpURLConnection) requestUrl.openConnection();
+            httpConnection.setConnectTimeout(5000);
+            httpConnection.setReadTimeout(10000);
+            httpConnection.setInstanceFollowRedirects(false);
+            executorService.execute(new ResponseReader());
+        }
+        catch (IOException exc) {
+            throw new WeatherRequestException(requestUrl);
+        }
     }
 }

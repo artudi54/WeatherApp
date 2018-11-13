@@ -21,8 +21,4 @@ public class ThreeHourWeatherForecast {
     public List<WeatherCondition> getWeatherConditions() {
         return weatherConditions;
     }
-
-    public int getSize() {
-        return weatherConditions.size();
-    }
 }

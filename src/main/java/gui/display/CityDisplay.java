@@ -1,13 +1,10 @@
 package main.java.gui.display;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import main.java.AppUtils;
 import main.java.weather.types.City;
-
-import java.io.IOException;
 
 public class CityDisplay extends VBox {
     @FXML

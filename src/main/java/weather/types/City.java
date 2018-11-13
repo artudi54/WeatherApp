@@ -5,10 +5,10 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class City implements Comparable<City> {
-    private static final Comparator<City> COMPARATOR = Comparator.comparing(City::getName)
-                                                                 .thenComparing(City::getCountry)
-                                                                 .thenComparing(City::getCoordinates)
-                                                                 .thenComparing(City::getId);
+    private static final Comparator<City> COMPARATOR =Comparator.comparing(City::getName)
+                                                                .thenComparing(City::getCountry)
+                                                                .thenComparing(City::getCoordinates)
+                                                                .thenComparing(City::getId);
     private int id;
     private String name;
     private Country country;

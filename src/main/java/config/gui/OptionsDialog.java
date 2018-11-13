@@ -2,11 +2,8 @@ package main.java.config.gui;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import main.java.AppUtils;
 import main.java.config.Config;
 import main.java.weather.types.UnitsFormat;
@@ -31,7 +28,7 @@ public class OptionsDialog extends Dialog {
     public OptionsDialog(Config config) {
         try {
             AppUtils.loadFXML(getClass().getResource("/fxml/OptionsDialog.fxml"), this, getDialogPane());
-
+            setTitle("WeatherApp");
             this.config = config;
 
             weatherApiKeyField.setText(config.getWeatherApiKey());
@@ -56,7 +53,7 @@ public class OptionsDialog extends Dialog {
         alert.setHeaderText("API key");
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.initOwner(getDialogPane().getScene().getWindow());
-        AppUtils.setDialogMinSize(this);
+        AppUtils.setDialogMinSize(alert);
 
         Optional<ButtonType> response = alert.showAndWait();
         return response.isPresent() && response.get() == ButtonType.YES;

@@ -10,7 +10,6 @@ import org.ini4j.InvalidFileFormatException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.security.spec.ECField;
 import java.util.Objects;
 import java.util.prefs.Preferences;
 
@@ -115,9 +114,6 @@ public class Config {
             config.parseIni(ini);
             return config;
         }
-
-
-
         catch (InvalidFileFormatException ignore) {
             throw new ConfigException(iniPath, ConfigException.Type.PARSE);
         }
@@ -136,7 +132,6 @@ public class Config {
             fillIni(ini);
             ini.store();
         }
-
         catch (InvalidFileFormatException ignore) {
             throw new ConfigException(iniPath, ConfigException.Type.PARSE);
         }

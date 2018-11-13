@@ -1,9 +1,10 @@
 package main.java.weather.types;
 
 import java.security.InvalidParameterException;
-import java.time.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 public class SunTime {
     public static final SunTime NA = new SunTime(null);

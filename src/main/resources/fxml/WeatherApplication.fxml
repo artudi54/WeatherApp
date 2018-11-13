@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import main.java.gui.display.CityDisplay?>
+<?import main.java.gui.display.WeatherDisplay?>
+<?import main.java.gui.input.LocationChooser?>
 <?import org.controlsfx.control.StatusBar?>
 
-<?import main.java.gui.input.LocationChooser?>
-<?import main.java.gui.display.WeatherDisplay?>
-<?import main.java.gui.display.CityDisplay?>
-<?import javafx.geometry.Insets?>
 <fx:root type="Group"
          xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <VBox>

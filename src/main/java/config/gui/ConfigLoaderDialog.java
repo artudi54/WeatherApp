@@ -91,7 +91,7 @@ public class ConfigLoaderDialog extends Dialog<CompleteConfig> {
             alert.showAndWait();
         }
 
-        AppUtils.closeExecutorService(executorService);
+        AppUtils.shutdownExecutorService(executorService);
         setResult(configLoader.getValue());
     }
 
@@ -105,7 +105,7 @@ public class ConfigLoaderDialog extends Dialog<CompleteConfig> {
         AppUtils.setDialogMinSize(alert);
         alert.showAndWait();
 
-        AppUtils.closeExecutorService(executorService);
+        AppUtils.shutdownExecutorService(executorService);
         getDialogPane().getScene().getWindow().hide();
     }
 }

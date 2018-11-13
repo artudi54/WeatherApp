@@ -1,6 +1,5 @@
 package main.java.weather.types;
 
-import java.security.InvalidParameterException;
 import java.util.Comparator;
 
 public class Coordinates implements Comparable<Coordinates> {

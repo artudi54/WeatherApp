@@ -20,7 +20,8 @@ public class Resources {
             else
                 FILE_SYSTEM = null;
         }
-        catch (IOException | URISyntaxException ignore) {
+        catch (IOException | URISyntaxException exc) {
+            exc.printStackTrace();
             FILE_SYSTEM = null;
             // will never occur
         }
@@ -39,8 +40,8 @@ public class Resources {
         try {
             return getPathFromUri(url.toURI());
         }
-        catch (URISyntaxException ignore) {
-            // never occurs
+        catch (URISyntaxException exc) {
+            exc.printStackTrace();
             return null;
         }
     }

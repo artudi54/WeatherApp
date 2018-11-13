@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
@@ -49,9 +48,9 @@ public class LocationChooser extends VBox {
         onLocationChosenByCityId.addListener(((observableValue, oldV, newV) ->
                 setEventHandler(LocationChosenByCityIdEvent.LOCATION_CHOSEN_BY_CITY_ID, newV)));
 
-        cityChooser.setOnAction(this::handleInputByCityName);
-        coordinatesChooser.setOnAction(this::handleInputByCoordinates);
-        idChooser.setOnAction(this::handleInputByCityId);
+        cityChooser.setOnAction(event -> handleInputByCityName());
+        coordinatesChooser.setOnAction(event -> handleInputByCoordinates());
+        idChooser.setOnAction(event -> handleInputByCityId());
     }
 
     public void setCities(Cities cities) {
@@ -141,7 +140,7 @@ public class LocationChooser extends VBox {
         alert.showAndWait();
     }
 
-    private void handleInputByCityName(ActionEvent event) {
+    private void handleInputByCityName() {
         String cityName = cityChooser.getCityName();
         if (cityName.isEmpty()) {
             showInvalidInputAlert("city name input field is empty");
@@ -150,7 +149,7 @@ public class LocationChooser extends VBox {
         fireEvent(new LocationChosenByCityNameEvent(forecastTypeChooser.getForecastType(), cityName));
     }
 
-    private void handleInputByCoordinates(ActionEvent event) {
+    private void handleInputByCoordinates() {
         Coordinates coordinates = coordinatesChooser.getCoordinates();
         if (coordinates == null) {
             showInvalidInputAlert("invalid or empty coordinates specified");
@@ -159,7 +158,7 @@ public class LocationChooser extends VBox {
         fireEvent(new LocationChosenByCoordinatesEvent(forecastTypeChooser.getForecastType(), coordinates));
     }
 
-    private void handleInputByCityId(ActionEvent event) {
+    private void handleInputByCityId() {
         int cityId = idChooser.getCityId();
         if (cityId == -1) {
             showInvalidInputAlert("invalid or empty city id specified");

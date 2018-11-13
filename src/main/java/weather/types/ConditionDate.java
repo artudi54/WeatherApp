@@ -4,7 +4,6 @@ import java.security.InvalidParameterException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class ConditionDate {
     private static final DateFormat FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm");

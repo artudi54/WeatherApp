@@ -2,11 +2,11 @@ package main.java.parser;
 
 import main.java.config.WorldInformation;
 import main.java.exception.WeatherResponseParseException;
-import main.java.weather.types.*;
 import main.java.networking.WeatherResponse;
 import main.java.weather.condition.CurrentWeatherCondition;
 import main.java.weather.condition.ThreeHourWeatherForecast;
 import main.java.weather.condition.WeatherCondition;
+import main.java.weather.types.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -21,10 +21,6 @@ public class WeatherJSONParser {
     public WeatherJSONParser(WorldInformation worldInformation) {
         this.worldInformation = Objects.requireNonNull(worldInformation, "worldInformation cannot be null");
     }
-
-
-
-
     private int parseInteger(JSONObject object, String name) {
         return ((Number)object.get(name)).intValue();
     }
@@ -89,7 +85,6 @@ public class WeatherJSONParser {
                 parseDouble(object, "speed"),
                 parseDouble(object, "deg"),
                 unitsFormat);
-
         return new Wind(
                 parseDouble(object, "speed"),
                 -1,
@@ -189,12 +184,11 @@ public class WeatherJSONParser {
             int id = ((Number)responseObject.get("id")).intValue();
             City city = worldInformation.getCities().getCityById(id);
             if (city == null)
-                throw new Exception("city null");
+                throw new Exception("parse error - city is unknown");
 
             return new CurrentWeatherCondition(weatherCondition, city);
         }
         catch (Exception exc) {
-            exc.printStackTrace();
             throw new WeatherResponseParseException(ForecastType.CURRENT_WEATHER, exc.getMessage());
         }
     }
