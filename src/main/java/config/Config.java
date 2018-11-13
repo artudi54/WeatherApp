@@ -26,7 +26,7 @@ public class Config {
     private String lastCityName = "";
     private Coordinates lastCoordinates = null;
     private int lastCityId = 0;
-    private UnitsFormat unitsFormat = UnitsFormat.DEFAULT;
+    private UnitsFormat unitsFormat = UnitsFormat.METRIC;
     private String weatherApiKey = "b7e86275bda27422cd3181e6419a42a7";
     private boolean saveLastInput = true;
 
@@ -85,7 +85,7 @@ public class Config {
         lastCityName = preferences.node(WEATHER_SECTION).get(LAST_CITY_NAME, "");
         lastCoordinates = Coordinates.fromString(preferences.node(WEATHER_SECTION).get(LAST_COORDINATES, ""));
         lastCityId = Integer.parseInt(preferences.node(WEATHER_SECTION).get(LAST_CITY_ID, "0"));
-        unitsFormat = UnitsFormat.fromString(preferences.node(WEATHER_SECTION).get(UNITS_FORMAT, ""));
+        unitsFormat = UnitsFormat.fromString(preferences.node(WEATHER_SECTION).get(UNITS_FORMAT, "metric"));
         weatherApiKey = preferences.node(WEATHER_SECTION).get(WEATHER_API_KEY, weatherApiKey);
         saveLastInput = Boolean.parseBoolean(preferences.node(WEATHER_SECTION).get(SAVE_LAST_INPUT, "true"));
     }
