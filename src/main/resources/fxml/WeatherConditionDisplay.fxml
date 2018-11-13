@@ -7,11 +7,11 @@
 
 <fx:root type="VBox" spacing="10" alignment="CENTER"
          xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <padding><Insets topRightBottomLeft="15"/></padding>
+    <padding><Insets topRightBottomLeft="10"/></padding>
     <GridPane hgap="10" vgap="10" alignment="CENTER">
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="160"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="180"
                text="Weather description:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" minWidth="160"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" minWidth="180"
                    fx:id="descriptionLabel" editable="false"/>
 
         <Label GridPane.columnIndex="0" GridPane.rowIndex="1"
@@ -20,63 +20,48 @@
                    fx:id="temperatureLabel" editable="false"/>
 
         <Label GridPane.columnIndex="0" GridPane.rowIndex="2"
-               text="Minimal temperature:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"
-                   fx:id="minimalTemperatureLabel" editable="false"/>
-
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="3"
-               text="Maximal temperature:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"
-                   fx:id="maximalTemperatureLabel" editable="false"/>
-
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="4"
                text="Pressure:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"
                    fx:id="pressureLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="5"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="3"
                text="Sea pressure:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="5"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"
                    fx:id="seaPressureLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="6"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="4"
                text="Ground pressure:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="6"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4"
                    fx:id="groundPressureLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="7"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="5"
                text="Humidity:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="7"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="5"
                    fx:id="humidityLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="8"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="6"
                text="Wind:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="8"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="6"
                    fx:id="windLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="9"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="7"
                text="Cloudiness:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="9"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="7"
                    fx:id="cloudinessLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="10"
-               text="Rainfall volume:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="10"
-                   fx:id="rainfallVolumeLabel" editable="false"/>
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="8"
+               text="Rainfall/Snowfall volume:"/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="8"
+                   fx:id="rainfallSnowfallVolumeLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="11"
-               text="Snowfall volume:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="11"
-                   fx:id="snowfallVolumeLabel" editable="false"/>
-
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="12"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="9"
                text="Sunrise:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="12"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="9"
                    fx:id="sunriseLabel" editable="false"/>
 
-        <Label GridPane.columnIndex="0" GridPane.rowIndex="13"
+        <Label GridPane.columnIndex="0" GridPane.rowIndex="10"
                text="Sunset:"/>
-        <TextField GridPane.columnIndex="1" GridPane.rowIndex="13"
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="10"
                    fx:id="sunsetLabel" editable="false"/>
     </GridPane>
     <HBox spacing="5" alignment="CENTER">

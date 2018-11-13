@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root type="BorderPane" prefWidth="400" prefHeight="650"
+<fx:root type="BorderPane"
          xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <padding><Insets topRightBottomLeft="10"/></padding>
     <top><ComboBox fx:id="conditionDisplayComboBox" minWidth="150"/></top>
