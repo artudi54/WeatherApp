@@ -1,6 +1,8 @@
 # WeatherApp
-![Screenshot](WeatherApp-Linux.png)
-![Screenshot](WeatherApp-Windows.png)
+<p align="center">
+  <img src="WeatherApp-Linux.png">
+  <img src="WeatherApp-Windows.png">
+</p>
 
 ## Release versions
 
