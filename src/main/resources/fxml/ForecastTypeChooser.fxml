@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<fx:root type="TitledPane" text="Forecast type" textAlignment="CENTER" collapsible="false"
+         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroup"/>
+    </fx:define>
+    <VBox alignment="CENTER_LEFT" spacing="10">
+        <padding><Insets topRightBottomLeft="10"/></padding>
+        <RadioButton toggleGroup="$toggleGroup" fx:id = "currentWeatherButton" text="Current weather" selected="true"/>
+        <RadioButton toggleGroup="$toggleGroup" fx:id = "threeHourForecastButton" text="Three hour forecast"/>
+    </VBox>
+</fx:root>

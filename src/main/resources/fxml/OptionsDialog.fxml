@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<fx:root type="DialogPane"
+         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+        <padding><Insets top="25" right="25" left="25" bottom="10"/></padding>
+    <content>
+        <Group>
+            <VBox spacing="30">
+                <GridPane hgap="20" vgap="5">
+                    <Label text="Weather API key" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="weatherApiKeyField" minWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Units format" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="unitsFormatComboBox" minWidth="250" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <CheckBox fx:id="saveLastInputCheckBox" text="Save last input" minWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                </GridPane>
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <Button fx:id="okButton" text="OK" minWidth="100"/>
+                    <Button fx:id="defaultsButton" text="Defaults" minWidth="100"/>
+                </HBox>
+            </VBox>
+        </Group>
+    </content>
+    <ButtonType fx:constant="CANCEL"/>
+</fx:root>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.Group?>
+<fx:root type="DialogPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <content>
+        <Group>
+            <VBox alignment="CENTER">
+                <padding><Insets top="15" right="30" bottom="10" left="30"/></padding>
+                <ProgressBar minWidth="300"/>
+                <Label alignment="CENTER" text="Loading configuration..."/>
+            </VBox>
+        </Group>
+    </content>
+</fx:root>

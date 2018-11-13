@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import main.java.gui.input.*?>
+
+<?import javafx.geometry.Insets?>
+<fx:root type="LocationChooser" spacing="10" alignment="CENTER" stylesheets="/fxml/LocationChooser.css"
+         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <padding><Insets topRightBottomLeft="15"/></padding>
+    <Label text="Choose location" textAlignment="CENTER"/>
+    <HBox spacing="10" alignment="TOP_CENTER" fillHeight="false">
+        <TabPane tabClosingPolicy="UNAVAILABLE" tabMinWidth="100" minWidth="450">
+            <Tab text="By city name">
+                <CityChooser fx:id="cityChooser"/>
+            </Tab>
+            <Tab text="By global coordinates">
+                <CoordinatesChooser fx:id="coordinatesChooser"/>
+            </Tab>
+            <Tab text="By city ID">
+                <IDChooser fx:id="idChooser"/>
+            </Tab>
+        </TabPane>
+        <ForecastTypeChooser fx:id="forecastTypeChooser" minWidth="250"/>
+    </HBox>
+</fx:root>

@@ -1,0 +1,18 @@
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: null;
+    -fx-effect: null;
+}
+.tab-pane {
+    -fx-border-width: 0.5px;
+    -fx-border-style: solid;
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
+}
+
+.tab-pane {
+    -fx-alignment: CENTER;
+}
+
+cityInformationLabel {
+    -fx-font-size: 130%;
+}

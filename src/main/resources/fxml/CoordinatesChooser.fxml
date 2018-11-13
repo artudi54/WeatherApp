@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+
+<fx:root type="GridPane" alignment="CENTER" hgap="10.0" vgap="10.0"
+         xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <columnConstraints>
+        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="ALWAYS"/>
+        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER"/>
+    </columnConstraints>
+    <Label GridPane.rowIndex="0" GridPane.columnIndex="0"
+            text="Latitude"/>
+    <TextField fx:id="latitudeInputField" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                minWidth="200.0"/>
+    <Label GridPane.rowIndex="2" GridPane.columnIndex="0"
+           text="Longitude"/>
+    <TextField fx:id="longitudeInputField" GridPane.rowIndex="3" GridPane.columnIndex="0"
+               minWidth="200.0"/>
+    <Button fx:id="getForecastButton" GridPane.columnIndex="1" GridPane.rowIndex="3"
+            text="Get forecast" defaultButton="true" mnemonicParsing="false"/>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</fx:root>
