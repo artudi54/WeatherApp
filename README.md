@@ -1,4 +1,8 @@
 # WeatherApp
+WeatherApp i a weather application provading current weather and weather forecast. It uses RESTful API provided by https://openweathermap.org/. It features displaying current weather or three hour forecast for next 5 days, based on city, global coordinates or internal city ID.
+
+Application is written with Java and OpenJFX. Minimal supported java version is 10. Preview (Windows and Linux):
+
 <p align="center">
   <img src="WeatherApp-Linux.png">
   <img src="WeatherApp-Windows.png">
@@ -36,7 +40,7 @@ Import project
 Then navigate to 'WeatherApp' directory and select 'pom.xml'. Complete the import dialog selecting JDK 10 or newer.
 After the project is open perform:
 ```
-Add Configuration.. | + | Maven
+Add Configuration.. -> + -> Maven
 ```
 Enter the name of the configuration (e.g. Weather App) and add folowing arguments to 'Command line:'
 ```
