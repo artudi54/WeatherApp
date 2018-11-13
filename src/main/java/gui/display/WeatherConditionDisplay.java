@@ -31,9 +31,7 @@ public class WeatherConditionDisplay extends VBox {
     @FXML
     private TextField pressureLabel;
     @FXML
-    private TextField seaPressureLabel;
-    @FXML
-    private TextField groundPressureLabel;
+    private TextField seaGroundPressureLabel;
     @FXML
     private TextField humidityLabel;
     @FXML
@@ -43,9 +41,7 @@ public class WeatherConditionDisplay extends VBox {
     @FXML
     private TextField rainfallSnowfallVolumeLabel;
     @FXML
-    private TextField sunriseLabel;
-    @FXML
-    private TextField sunsetLabel;
+    private TextField sunriseSunsetLabel;
 
     private WeatherIcons weatherIcons;
     private WeatherCondition weatherCondition;
@@ -84,15 +80,14 @@ public class WeatherConditionDisplay extends VBox {
                     weatherCondition.getTemperature() + ", min(" +
                     weatherCondition.getMinimalTemperature() + "), max(" + weatherCondition.getMaximalTemperature() + ")");
             pressureLabel.setText(weatherCondition.getPressure().toString());
-            seaPressureLabel.setText(weatherCondition.getSeaPressure().toString());
-            groundPressureLabel.setText(weatherCondition.getGroundPressure().toString());
+            seaGroundPressureLabel.setText(weatherCondition.getSeaPressure().toString() + ", " +
+                                           weatherCondition.getGroundPressure().toString());
             humidityLabel.setText(weatherCondition.getHumidity().toString());
             windLabel.setText(weatherCondition.getWind().toString());
             cloudinessLabel.setText(weatherCondition.getCloudiness().toString());
             rainfallSnowfallVolumeLabel.setText(weatherCondition.getRainfallVolume() + ", " +
                                         weatherCondition.getSnowfallVolume());
-            sunriseLabel.setText(weatherCondition.getSunrise().toString());
-            sunsetLabel.setText(weatherCondition.getSunset().toString());
+            sunriseSunsetLabel.setText(weatherCondition.getSunrise() + ", " + weatherCondition.getSunset());
         }
     }
 
@@ -102,14 +97,12 @@ public class WeatherConditionDisplay extends VBox {
         descriptionLabel.clear();
         temperatureLabel.clear();
         pressureLabel.clear();
-        seaPressureLabel.clear();
-        groundPressureLabel.clear();
+        seaGroundPressureLabel.clear();
         humidityLabel.clear();
         windLabel.clear();
         cloudinessLabel.clear();
         rainfallSnowfallVolumeLabel.clear();
-        sunriseLabel.clear();
-        sunsetLabel.clear();
+        sunriseSunsetLabel.clear();
     }
 
     public String getDateDescription() {
