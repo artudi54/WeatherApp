@@ -27,6 +27,12 @@ It will create 'WeatherApp' subdirectory containing ready to run application. Tu
 ```
 java -jar WeatherApp/WeatherApp.jar
 ```
+Note:
+If you are using linux systems it may be neccesary to add executable permissions to file first (if starting from file manager).
+```
+chmod a+x WeatherApp/WeatherApp.jar
+```
+
 To run the code using maven enter:
 ```
 mvn compile exec:java
