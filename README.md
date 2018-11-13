@@ -1,5 +1,6 @@
 # WeatherApp
-
+![Screenshot](WeatherApp-Linux.png)
+![Screenshot](WeatherApp-Windows.png)
 
 ## Release versions
 
