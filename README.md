@@ -8,7 +8,14 @@ Application is written with Java and OpenJFX. Minimal supported java version is 
   <img src="WeatherApp-Windows.png">
 </p>
 
-## Release versions
+## Releases
+To get complete and runnable application download the release targeted for your platform:
+
+[Windows](https://github.com/artudi54/WeatherApp/releases/tag/v1.0-Windows)
+
+[Linux](https://github.com/artudi54/WeatherApp/releases/tag/v1.0-Linux)
+
+[All releases](https://github.com/artudi54/WeatherApp/releases)
 
 ## Build and run
 Note: Java 10 or higher is required to build and run this package.
