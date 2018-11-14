@@ -30,7 +30,7 @@ To compile and distribute the application type:
 ```
 mvn package
 ```
-It will create 'WeatherApp' subdirectory containing ready to run application. Tu run it open 'WeatherApp.jar' file in your favourite file manager or use command:
+It will create 'WeatherApp' subdirectory containing ready to run application. To run it open 'WeatherApp.jar' file in your favourite file manager or use command:
 ```
 java -jar WeatherApp/WeatherApp.jar
 ```
