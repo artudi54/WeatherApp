@@ -59,4 +59,4 @@ Enter the name of the configuration (e.g. Weather App) and add folowing argument
 ```
 -q compile exec:java
 ```
-Accept configuration settings. Your project should be fully configured and runnuble now (Shift+F10).
+Accept configuration settings. Your project should be fully configured and runnable now (Shift+F10).
