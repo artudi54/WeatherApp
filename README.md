@@ -8,7 +8,14 @@ Application is written with Java and OpenJFX. Minimal supported java version is 
   <img src="WeatherApp-Windows.png">
 </p>
 
-## Release versions
+## Releases
+To get complete and runnable application download the release targeted for your platform:
+
+[Windows](https://github.com/artudi54/WeatherApp/releases/tag/v1.0-Windows)
+
+[Linux](https://github.com/artudi54/WeatherApp/releases/tag/v1.0-Linux)
+
+[All releases](https://github.com/artudi54/WeatherApp/releases)
 
 ## Build and run
 Note: Java 10 or higher is required to build and run this package.
@@ -23,7 +30,7 @@ To compile and distribute the application type:
 ```
 mvn package
 ```
-It will create 'WeatherApp' subdirectory containing ready to run application. Tu run it open 'WeatherApp.jar' file in your favourite file manager or use command:
+It will create 'WeatherApp' subdirectory containing ready to run application. To run it open 'WeatherApp.jar' file in your favourite file manager or use command:
 ```
 java -jar WeatherApp/WeatherApp.jar
 ```
@@ -52,4 +59,4 @@ Enter the name of the configuration (e.g. Weather App) and add folowing argument
 ```
 -q compile exec:java
 ```
-Accept configuration settings. Your project should be fully configured and runnuble now (Shift+F10).
+Accept configuration settings. Your project should be fully configured and runnable now (Shift+F10).
