@@ -83,7 +83,7 @@ public class ConfigLoaderDialog extends Dialog<CompleteConfig> {
         if (configLoader.hasError()) {
             Alert alert = new Alert(
                     Alert.AlertType.ERROR,
-                    "Error occured - " + configLoader.getErrorString() + " - using default configuration",
+                    "Error occurred - " + configLoader.getErrorString() + " - using default configuration",
                     ButtonType.OK);
             alert.setHeaderText("Configuration load error");
             alert.initOwner(getDialogPane().getScene().getWindow());
